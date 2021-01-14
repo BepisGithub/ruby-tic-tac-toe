@@ -22,3 +22,4 @@ class Player
     number_of_players == 1 ? @drawing = "X" : @drawing = "O"
   end
 end
+
