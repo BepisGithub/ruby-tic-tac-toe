@@ -57,7 +57,11 @@ class Game
       # TODO: check if the player has won
       swap_active_states
     when false
-
+      @player2.active_player = true
+      choices = position_choices
+      @board.draw(choices[0], choices[1], @player2.drawing) # TODO: check for an error
+      # TODO: check if the player has won
+      swap_active_states
     end
   end
 end
