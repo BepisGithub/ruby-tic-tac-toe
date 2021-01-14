@@ -85,4 +85,7 @@ class Game
     # TODO: End the game if a player has won
   end
 end
-
+# me = Player.new("me")
+# you = Player.new("you")
+# game = Game.new(me, you)
+# 5.times do game.play end
