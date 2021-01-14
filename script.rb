@@ -14,8 +14,11 @@ class Board
 end
 
 class Player
+  @@number_of_players = 0
   def initialize(name)
     @name = name
     @has_won = false
+    @@number_of_players += 1
+    number_of_players == 1 ? @drawing = "X" : @drawing = "O"
   end
 end
