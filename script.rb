@@ -3,6 +3,21 @@ class Board
     @map = [[], [], []]
   end
 
+  def print_array # HACK
+    @map.each do |column| 
+      print @map[column][0] # Print the top item
+      print "\n"
+    end
+    @map.each do |column| 
+      print @map[column][1] # Print the top item
+      print "\n"
+    end
+    @map.each do |column| 
+      print @map[column][2] # Print the top item
+      print "\n"
+    end
+  end
+
   def draw(row, column, drawing)
     # need to ensure the position being drawn on can't be occupied
     # TODO: print the map
@@ -70,3 +85,4 @@ class Game
     # TODO: End the game if a player has won
   end
 end
+
