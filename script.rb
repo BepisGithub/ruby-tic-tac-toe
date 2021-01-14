@@ -39,16 +39,22 @@ class Game
     @player2.active_player = !@player2.active_player
   end
 
+  def position_choices
+    puts "Which row would you like to draw on? 1 or 2 or 3"
+    row_choice = gets.chomp until choice.is_a? Integer
+    puts "Which column would you like to draw on? 1 or 2 or 3"
+    column_choice = gets.chomp until choice.is_a? Integer
+    [row_choice, column_choice]
+  end
+
   def play
     @player1.active_player = true if player1.active_player == false && player2.active_player == false
     case @player1.active_player
     when true
       @player2.active_player = false
-      puts "Which row would you like to draw on? 1 or 2 or 3"
-      row_choice = gets.chomp until choice.is_a? Integer
-      puts "Which column would you like to draw on? 1 or 2 or 3"
-      column_choice = gets.chomp until choice.is_a? Integer
-      @board.draw(row_choice, column_choice, @player1.drawing) # TODO: check for an error
+      choices = position_choices
+      @board.draw(choices[0], choices[1], @player1.drawing) # TODO: check for an error
+      # TODO: check if the player has won
       swap_active_states
     when false
 
