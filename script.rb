@@ -38,6 +38,8 @@ class Game
     case @player1.active_player
     when true
       @player2.active_player = false
+      puts "Which row would you like to draw on? 1 or 2 or 3"
+      choice = gets.chomp until choice.is_a? Integer
     when false
 
     end
