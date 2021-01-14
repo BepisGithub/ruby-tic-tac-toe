@@ -1,27 +1,34 @@
 class Board
   def initialize
-    @map = [[], [], []]
+    @map = [[" "," "," "], [" "," "," "], [" "," "," "]]
   end
 
   def print_array # HACK
-    @map.each_with_index do |column, index| 
+    @map.each_with_index do |column, index|
+      print "|"
       print @map[index][0] # Print the top item
-      print "\n"
+      print "|"
     end
+    print "\n"
     @map.each_with_index do |column, index| 
+      print "|"
       print @map[index][1] # Print the top item
-      print "\n"
+      print "|"
     end
+    print "\n"
     @map.each_with_index do |column, index| 
+      print "|"
       print @map[index][2] # Print the top item
-      print "\n"
+      print "|"
     end
+    print "\n"
   end
 
   def draw(row, column, drawing)
     # need to ensure the position being drawn on can't be occupied
     # TODO: print the map
-    if @map[row][column].nil?
+    print_array
+    if @map[row][column] == " "
       @map[row][column] = drawing
     else
       puts "That spot is occupied, please try again"
@@ -85,7 +92,7 @@ class Game
     # TODO: End the game if a player has won
   end
 end
-# me = Player.new("me")
-# you = Player.new("you")
-# game = Game.new(me, you)
-# 5.times do game.play end
+me = Player.new("me")
+you = Player.new("you")
+game = Game.new(me, you)
+5.times do game.play end
