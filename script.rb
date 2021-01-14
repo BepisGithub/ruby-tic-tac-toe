@@ -42,6 +42,7 @@ class Game
       row_choice = gets.chomp until choice.is_a? Integer
       puts "Which column would you like to draw on? 1 or 2 or 3"
       column_choice = gets.chomp until choice.is_a? Integer
+      @board.draw(row_choice, column_choice, @player1.drawing)
     when false
 
     end
