@@ -63,5 +63,6 @@ class Game
       # TODO: check if the player has won
       swap_active_states
     end
+    # TODO: End the game if a player has won
   end
 end
