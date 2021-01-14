@@ -5,7 +5,7 @@ class Board
 
   def draw(row, column, drawing)
     # need to ensure the position being drawn on can't be occupied
-    if @map[row][column].empty?
+    if @map[row][column].nil?
       @map[row][column] = drawing
     else
       puts "That spot is occupied, please try again"
