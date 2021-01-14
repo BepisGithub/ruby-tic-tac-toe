@@ -3,22 +3,22 @@ class Board
     @map = [[" "," "," "], [" "," "," "], [" "," "," "]]
   end
 
-  def print_array # HACK
+  def print_map # HACK
     @map.each_with_index do |column, index|
       print "|"
-      print @map[index][0] # Print the top item
+      print @map[index][0] # Print the top items
       print "|"
     end
     print "\n"
     @map.each_with_index do |column, index| 
       print "|"
-      print @map[index][1] # Print the top item
+      print @map[index][1] # Print the middle item
       print "|"
     end
     print "\n"
     @map.each_with_index do |column, index| 
       print "|"
-      print @map[index][2] # Print the top item
+      print @map[index][2] # Print the bottom item
       print "|"
     end
     print "\n"
@@ -26,14 +26,13 @@ class Board
 
   def draw(row, column, drawing)
     # need to ensure the position being drawn on can't be occupied
-    # TODO: print the map
-    print_array
     if @map[row][column] == " "
       @map[row][column] = drawing
     else
       puts "That spot is occupied, please try again"
       "Error"
     end
+    print_map
   end
 end
 
