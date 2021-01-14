@@ -40,6 +40,8 @@ class Game
       @player2.active_player = false
       puts "Which row would you like to draw on? 1 or 2 or 3"
       row_choice = gets.chomp until choice.is_a? Integer
+      puts "Which column would you like to draw on? 1 or 2 or 3"
+      column_choice = gets.chomp until choice.is_a? Integer
     when false
 
     end
