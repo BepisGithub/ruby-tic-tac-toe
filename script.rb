@@ -24,3 +24,11 @@ class Player
     @@number_of_players += 1
   end
 end
+
+class Game
+  def initialize(player1, player2, board)
+    @player1 = player1
+    @player2 = player2
+    @board = board
+  end
+end
