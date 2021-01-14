@@ -42,9 +42,9 @@ class Game
 
   def position_choices
     puts "Which row would you like to draw on? 1 or 2 or 3"
-    row_choice = gets.chomp until row_choice.is_a? Integer
+    row_choice = gets.chomp.to_i until row_choice.is_a? Integer
     puts "Which column would you like to draw on? 1 or 2 or 3"
-    column_choice = gets.chomp until column_choice.is_a? Integer
+    column_choice = gets.chomp.to_i until column_choice.is_a? Integer
     [row_choice, column_choice]
   end
 
