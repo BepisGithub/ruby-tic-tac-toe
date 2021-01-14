@@ -62,13 +62,21 @@ class Game
     @player2.active_player = !@player2.active_player
   end
 
+  def get_choice
+    choice = gets.chomp.to_i until choice.is_a? Integer
+    until choice <= 3 && choice >= 1 # HACK
+      puts "Out of range input, try again"
+      choice = ""
+      choice = gets.chomp.to_i until choice.is_a? Integer
+    end
+    choice -= 1
+  end
+
   def position_choices
     puts "Which row would you like to draw on? 1 or 2 or 3"
-    row_choice = gets.chomp.to_i until row_choice.is_a? Integer
-    row_choice -= 1
+    row_choice = get_choice
     puts "Which column would you like to draw on? 1 or 2 or 3"
-    column_choice = gets.chomp.to_i until column_choice.is_a? Integer
-    column_choice -= 1
+    column_choice = get_choice
     [row_choice, column_choice]
   end
 
