@@ -49,7 +49,7 @@ class Game
   end
 
   def play
-    @player1.active_player = true if player1.active_player == false && player2.active_player == false
+    @player1.active_player = true if @player1.active_player == false && @player2.active_player == false
     case @player1.active_player
     when true
       @player2.active_player = false
