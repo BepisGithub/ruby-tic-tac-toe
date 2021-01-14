@@ -15,7 +15,8 @@ class Board
 end
 
 class Player
-  attr_reader :drawing
+  attr_reader :drawing, :name
+  attr_accessor :has_won, :active_player
 
   @@number_of_players = 0
   def initialize(name)
