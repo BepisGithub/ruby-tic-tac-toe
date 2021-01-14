@@ -20,6 +20,7 @@ class Player
   def initialize(name)
     @name = name
     @has_won = false
+    @active_player = false
     (@@number_of_players % 2).zero? ? @drawing = "X" : @drawing = "O"
     @@number_of_players += 1
   end
