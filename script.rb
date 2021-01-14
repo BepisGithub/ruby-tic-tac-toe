@@ -32,4 +32,8 @@ class Game
     @player2 = player2
     @board = board
   end
+
+  def play
+    @player1.active_player = true if player1.active_player == false && player2.active_player == false
+  end
 end
