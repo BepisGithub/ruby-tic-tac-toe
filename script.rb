@@ -28,10 +28,10 @@ class Player
 end
 
 class Game
-  def initialize(player1, player2, board)
+  def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
-    @board = board
+    @board = Board.new()
   end
 
   def swap_active_states
