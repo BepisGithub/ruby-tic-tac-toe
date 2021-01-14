@@ -62,20 +62,20 @@ class Game
     @player2.active_player = !@player2.active_player
   end
 
-  def get_choice
+  def get_choice # HACK
     choice = gets.chomp.to_i until choice.is_a? Integer
-    until choice <= 3 && choice >= 1 # HACK
+    until choice <= 3 && choice >= 1
       puts "Out of range input, try again"
       choice = ""
       choice = gets.chomp.to_i until choice.is_a? Integer
     end
-    choice -= 1
+    choice - 1
   end
 
-  def position_choices
-    puts "Which row would you like to draw on? 1 or 2 or 3"
+  def position_choices name
+    puts "Which row would you like to draw on, #{name}? 1 or 2 or 3"
     row_choice = get_choice
-    puts "Which column would you like to draw on? 1 or 2 or 3"
+    puts "Which column would you like to draw on, #{name}? 1 or 2 or 3"
     column_choice = get_choice
     [row_choice, column_choice]
   end
@@ -84,14 +84,16 @@ class Game
     @player1.active_player = true if @player1.active_player == false && @player2.active_player == false
     case @player1.active_player
     when true
+      # TODO: Let the player enter other values if they try to occupy a spot that is already filled
+
       @player2.active_player = false
-      choices = position_choices
+      choices = position_choices @player1.name
       @board.draw(choices[0], choices[1], @player1.drawing) # TODO: check for an error
       # TODO: check if the player has won
       swap_active_states
     when false
       @player2.active_player = true
-      choices = position_choices
+      choices = position_choices @player2.name
       @board.draw(choices[0], choices[1], @player2.drawing) # TODO: check for an error
       # TODO: check if the player has won
       swap_active_states
