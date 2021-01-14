@@ -9,6 +9,7 @@ class Board
       @map[row][column] = drawing
     else
       puts "That spot is occupied, please try again"
+      "Error"
     end
   end
 end
