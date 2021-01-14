@@ -4,16 +4,16 @@ class Board
   end
 
   def print_array # HACK
-    @map.each do |column| 
-      print @map[column][0] # Print the top item
+    @map.each_with_index do |column, index| 
+      print @map[index][0] # Print the top item
       print "\n"
     end
-    @map.each do |column| 
-      print @map[column][1] # Print the top item
+    @map.each_with_index do |column, index| 
+      print @map[index][1] # Print the top item
       print "\n"
     end
-    @map.each do |column| 
-      print @map[column][2] # Print the top item
+    @map.each_with_index do |column, index| 
+      print @map[index][2] # Print the top item
       print "\n"
     end
   end
