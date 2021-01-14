@@ -34,6 +34,11 @@ class Game
     @board = board
   end
 
+  def swap_active_states
+    @player1.active_player = !@player1.active_player
+    @player2.active_player = !@player2.active_player
+  end
+
   def play
     @player1.active_player = true if player1.active_player == false && player2.active_player == false
     case @player1.active_player
@@ -44,6 +49,7 @@ class Game
       puts "Which column would you like to draw on? 1 or 2 or 3"
       column_choice = gets.chomp until choice.is_a? Integer
       @board.draw(row_choice, column_choice, @player1.drawing) # TODO: check for an error
+      swap_active_states
     when false
 
     end
