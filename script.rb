@@ -175,7 +175,8 @@ class Game
     @board.print_map
     9.times do |i|
       round
-      p is_over = won?
+      is_over = won?
+      break if is_over
     end
     puts "That was a good game!"
   end
