@@ -60,6 +60,10 @@ class Player
   attr_accessor :has_won, :active_player
 
   @@number_of_players = 0
+
+  def self.number_of_players
+    @@number_of_players
+  end
   def initialize(name)
     @name = name.to_s.capitalize
     @has_won = false
@@ -188,8 +192,13 @@ class Game
     puts "That was a good game!"
   end
 end
-geoff = Player.new("geOff")
-yeos = Player.new("yeOs")
-game = Game.new(geoff, yeos)
+
+puts "What is your name, player #{(Player.number_of_players)+1}? "
+first_player = gets.chomp.to_s
+first_player = Player.new(first_player)
+puts "What is your name, player #{(Player.number_of_players)+1}? "
+second_player = gets.chomp.to_s
+second_player = Player.new(second_player)
+game = Game.new(first_player, second_player)
 # TODO: Keep playing the game until a winner is reached
 game.play
