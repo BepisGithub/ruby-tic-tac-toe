@@ -2,26 +2,31 @@ class Board
   def initialize
     @map = [[" "," "," "], [" "," "," "], [" "," "," "]]
   end
-
+  
   def print_map # HACK
+    hash = Hash.new
     @map.each_with_index do |column, index|
       print "|"
       print @map[index][0] # Print the top items
+      hash["top"].nil? ? hash["top"] = @map[index][0] : hash["top"] += @map[index][0]
       print "|"
     end
     print "\n"
     @map.each_with_index do |column, index| 
       print "|"
       print @map[index][1] # Print the middle item
+      hash["mid"].nil? ? hash["mid"] = @map[index][1] : hash["mid"] += @map[index][1]
       print "|"
     end
     print "\n"
     @map.each_with_index do |column, index| 
       print "|"
       print @map[index][2] # Print the bottom item
+      hash["bot"].nil? ? hash["bot"] = @map[index][2] : hash["bot"] += @map[index][2]
       print "|"
     end
     print "\n"
+    p hash
   end
 
   def draw(row, column, drawing)
