@@ -76,7 +76,6 @@ class Game
     @board = Board.new
   end
 
-  # TODO
   def h_winner? hash
     return true if hash["top"][0] == hash["top"][1] && hash["top"][0] == hash["top"][2] && hash["top"][0] != " "
     return true if hash["mid"][0] == hash["mid"][1] && hash["mid"][0] == hash["mid"][2] && hash["mid"][0] != " "
@@ -107,13 +106,12 @@ class Game
 
     false
   end
-  # END TODO
 
   def swap_active_states
     @player1.active_player = !@player1.active_player
     @player2.active_player = !@player2.active_player
   end
-  # HACK
+
   def get_choice
     choice = gets.chomp.to_i until choice.is_a? Integer
     until choice <= 3 && choice >= 1
@@ -132,7 +130,6 @@ class Game
     [column_choice, row_choice]
   end
 
-  # TODO: At the end of the round if someone has won, end the game
   def round
     @player1.active_player = true if @player1.active_player == false && @player2.active_player == false
     case @player1.active_player
@@ -173,7 +170,8 @@ class Game
 
   def play
     @board.print_map
-    9.times do |i|
+    # TODO: Upon a win, print the name of who won
+    9.times do
       round
       is_over = won?
       break if is_over
