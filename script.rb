@@ -94,7 +94,7 @@ class Game
 
   def d_winner? hash
     return true if hash["top"][0] == hash["mid"][1] && hash["mid"][1] == hash["bot"][2] && hash["top"][0] != " "
-    return true if hash["top"][2] == hash["mid"][1] && hash["mid"][1] == hash["bot"][0] && hash["top"][0] != " "
+    return true if hash["top"][2] == hash["mid"][1] && hash["mid"][1] == hash["bot"][0] && hash["top"][2] != " "
 
     false
   end
@@ -173,7 +173,7 @@ class Game
 
   def play
     @board.print_map
-    9.times do
+    9.times do |i|
       round
       p is_over = won?
     end
