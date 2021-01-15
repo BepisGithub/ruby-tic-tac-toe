@@ -89,22 +89,22 @@ class Game
 
       @player2.active_player = false
       choices = position_choices @player1.name
-      return_val = @board.draw(choices[0], choices[1], @player1.drawing) # TODO: check for an error
+      return_val = @board.draw(choices[0], choices[1], @player1.drawing) 
       p return_val
       while return_val=="Error"
         choices = position_choices @player1.name
-        return_val = @board.draw(choices[0], choices[1], @player1.drawing) # TODO: check for an error
+        return_val = @board.draw(choices[0], choices[1], @player1.drawing) # TODO: Randomly place the users choice after 5 failed attempts
       end
       # TODO: check if the player has won
       swap_active_states
     when false
       @player2.active_player = true
       choices = position_choices @player2.name
-      return_val = @board.draw(choices[0], choices[1], @player2.drawing) # TODO: check for an error
+      return_val = @board.draw(choices[0], choices[1], @player2.drawing) # TODO: Randomly place the users choice after 5 failed attempts
       p return_val
       while return_val=="Error"
         choices = position_choices @player2.name
-        return_val = @board.draw(choices[0], choices[1], @player2.drawing) # TODO: check for an error
+        return_val = @board.draw(choices[0], choices[1], @player2.drawing)
       end
       # TODO: check if the player has won
       swap_active_states
