@@ -174,7 +174,10 @@ class Game
     9.times do
       round
       is_over = won?
-      break if is_over
+      if is_over do
+        
+        break
+      end
     end
     puts "That was a good game!"
   end
