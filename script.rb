@@ -131,7 +131,7 @@ class Game
     [column_choice, row_choice]
   end
 
-  def round
+  def round # TODO: At the end of the round if someone has won, end the game
     @player1.active_player = true if @player1.active_player == false && @player2.active_player == false
     case @player1.active_player
     when true
@@ -151,7 +151,6 @@ class Game
           return_val = @board.draw(rand_choice[0], rand_choice[1], @player1.drawing)
         end
       end
-      # TODO: check if the player has won
       swap_active_states
     when false
       @player2.active_player = true
@@ -170,10 +169,8 @@ class Game
           return_val = @board.draw(rand_choice[0], rand_choice[1], @player2.drawing)
         end
       end
-      # TODO: check if the player has won
       swap_active_states
     end
-    # TODO: End the game if a player has won
   end
 
   def play
@@ -186,5 +183,5 @@ end
 me = Player.new("me")
 you = Player.new("you")
 game = Game.new(me, you)
-# TODO: Keep playing the game until a winner is reached or the max number of attempts have been reached (9)
+# TODO: Keep playing the game until a winner is reached
 game.play
