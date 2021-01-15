@@ -44,11 +44,9 @@ class Board
     empty_arr = []
     @map.each_with_index do |column, index_column|
       column.each_with_index do |row, index_row|
-        empty_arr.push([index_column,index_row]) if @map[index_column][index_row].include?(" ")
+        empty_arr.push([index_column, index_row]) if @map[index_column][index_row].include?(" ")
       end
     end
-    # TODO: check each array for an empty space
-    # TODO: if empty add it to the array
     if empty_arr.empty?
       puts "No empty spots"
       return "Error"
