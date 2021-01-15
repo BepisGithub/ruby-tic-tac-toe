@@ -99,9 +99,10 @@ class Game
   def won?
     hash = @board.print_map
     p hash
-    h_winner? hash
-    v_winner? hash
-    d_winner? hash
+    return true if h_winner? hash
+    return true if v_winner? hash
+    return true if d_winner? hash
+    return false
   end
   # END TODO
 
@@ -178,3 +179,4 @@ you = Player.new("you")
 game = Game.new(me, you)
 5.times { game.play }
 # TODO: Keep playing the game until a winner is reached or the max number of attempts have been reached (9)
+p game.won?
