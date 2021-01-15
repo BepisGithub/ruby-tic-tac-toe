@@ -72,12 +72,20 @@ class Game
   def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
-    @board = Board.new()
+    @board = Board.new
   end
 
   # TODO
   def h_winner? hash
+    if hash["top"][0] == hash["top"][1] && hash["top"][0] == hash["top"][2]
+      return true
+    elsif hash["mid"][0] == hash["mid"][1] && hash["mid"][0] == hash["mid"][2]
+      return true
+    elsif hash["bot"][0] == hash["bot"][1] && hash["bot"][0] == hash["bot"][2]
+      return true
+    end
 
+    return false
   end
 
   def v_winner? hash
