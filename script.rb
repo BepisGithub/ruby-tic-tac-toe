@@ -72,7 +72,7 @@ class Game
     choice - 1
   end
 
-  def position_choices name
+  def position_choices name # TODO: THis doesn't work properly
     # TODO: print which symbol (ie. X or O) corresponds with the player
     puts "Which row would you like to draw on, #{name}? 1 or 2 or 3"
     row_choice = get_choice
