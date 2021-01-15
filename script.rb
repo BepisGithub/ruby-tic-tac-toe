@@ -94,6 +94,7 @@ class Game
   def d_winner? hash
     return true if hash["top"][0] == hash["mid"][1] && hash["mid"][1] == hash["bot"][2]
     return true if hash["top"][2] == hash["mid"][1] && hash["mid"][1] == hash["bot"][0]
+    
     false
   end
 
@@ -131,7 +132,8 @@ class Game
     [column_choice, row_choice]
   end
 
-  def round # TODO: At the end of the round if someone has won, end the game
+  # TODO: At the end of the round if someone has won, end the game
+  def round
     @player1.active_player = true if @player1.active_player == false && @player2.active_player == false
     case @player1.active_player
     when true
@@ -140,7 +142,7 @@ class Game
       return_val = @board.draw(choices[0], choices[1], @player1.drawing)
       p return_val
       error_count = 0
-      while return_val=="Error"
+      while return_val == "Error"
         choices = position_choices @player1
         return_val = @board.draw(choices[0], choices[1], @player1.drawing)
         error_count += 1
@@ -158,7 +160,7 @@ class Game
       return_val = @board.draw(choices[0], choices[1], @player2.drawing)
       p return_val
       error_count = 0
-      while return_val=="Error"
+      while return_val == "Error"
         choices = position_choices @player2
         return_val = @board.draw(choices[0], choices[1], @player2.drawing)
         error_count += 1
