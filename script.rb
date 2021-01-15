@@ -30,7 +30,7 @@ class Board
       @map[row][column] = drawing
     else
       puts "That spot is occupied, please try again"
-      "Error"
+      return "Error"
     end
     print_map
   end
@@ -89,13 +89,23 @@ class Game
 
       @player2.active_player = false
       choices = position_choices @player1.name
-      @board.draw(choices[0], choices[1], @player1.drawing) # TODO: check for an error
+      return_val = @board.draw(choices[0], choices[1], @player1.drawing) # TODO: check for an error
+      p return_val
+      while return_val=="Error"
+        choices = position_choices @player1.name
+        return_val = @board.draw(choices[0], choices[1], @player1.drawing) # TODO: check for an error
+      end
       # TODO: check if the player has won
       swap_active_states
     when false
       @player2.active_player = true
       choices = position_choices @player2.name
-      @board.draw(choices[0], choices[1], @player2.drawing) # TODO: check for an error
+      return_val = @board.draw(choices[0], choices[1], @player2.drawing) # TODO: check for an error
+      p return_val
+      while return_val=="Error"
+        choices = position_choices @player2.name
+        return_val = @board.draw(choices[0], choices[1], @player2.drawing) # TODO: check for an error
+      end
       # TODO: check if the player has won
       swap_active_states
     end
@@ -105,4 +115,4 @@ end
 me = Player.new("me")
 you = Player.new("you")
 game = Game.new(me, you)
-5.times do game.play end
+5.times { game.play }
