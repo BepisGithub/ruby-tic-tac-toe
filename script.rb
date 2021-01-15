@@ -1,3 +1,5 @@
+require "pry"
+
 class Board
   def initialize
     @map = [[" "," "," "], [" "," "," "], [" "," "," "]]
@@ -36,7 +38,6 @@ class Board
       puts "That spot is occupied, please try again"
       return "Error"
     end
-    print_map
   end
 
   def empty_spaces
@@ -174,6 +175,7 @@ class Game
     @board.print_map
     9.times do
       round
+      p is_over = won?
     end
     puts "That was a good game!"
   end
