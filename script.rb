@@ -30,7 +30,7 @@ class Board
   end
 
   def draw(row, column, drawing)
-    # need to ensure the position being drawn on can't be occupied
+    # Need to ensure the position being drawn on can't be occupied
     if @map[row][column] == " "
       @map[row][column] = drawing
     else
@@ -109,8 +109,6 @@ class Game
     @player1.active_player = true if @player1.active_player == false && @player2.active_player == false
     case @player1.active_player
     when true
-      # TODO: Let the player enter other values if they try to occupy a spot that is already filled
-
       @player2.active_player = false
       choices = position_choices @player1
       return_val = @board.draw(choices[0], choices[1], @player1.drawing) 
