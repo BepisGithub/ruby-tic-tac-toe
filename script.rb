@@ -132,7 +132,7 @@ class Game
         choices = position_choices @player1
         return_val = @board.draw(choices[0], choices[1], @player1.drawing) # TODO: Randomly place the users choice after 5 failed attempts
         error_count += 1
-        if error_count > 5
+        if error_count > 2
           rand_choice = @board.empty_spaces
           rand_choice = rand_choice.sample
           p rand_choice
@@ -151,7 +151,7 @@ class Game
         choices = position_choices @player2
         return_val = @board.draw(choices[0], choices[1], @player2.drawing)
         error_count += 1
-        if error_count > 5
+        if error_count > 2
           rand_choice = @board.empty_spaces
           rand_choice = rand_choice.sample
           p rand_choice
