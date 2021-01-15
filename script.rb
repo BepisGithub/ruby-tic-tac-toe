@@ -39,6 +39,11 @@ class Board
     end
     print_map
   end
+
+  def empty_spaces
+    # TODO: check each array for an empty space
+    # TODO: if empty add it to the array
+  end
 end
 
 class Player
@@ -119,7 +124,7 @@ class Game
         return_val = @board.draw(choices[0], choices[1], @player1.drawing) # TODO: Randomly place the users choice after 5 failed attempts
         error_count += 1
         if error_count > 5
-          #empty spaces
+          # TODO: call empty spaces method
         end
       end
       # TODO: check if the player has won
@@ -135,7 +140,7 @@ class Game
         return_val = @board.draw(choices[0], choices[1], @player2.drawing)
         error_count += 1
         if error_count > 5
-          #empty spaces
+          # TODO: call empty spaces method
         end
       end
       # TODO: check if the player has won
