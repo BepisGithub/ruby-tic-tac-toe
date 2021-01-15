@@ -62,6 +62,7 @@ class Game
     @board = Board.new()
   end
 
+  # TODO
   def h_winner? hash
 
   end
@@ -79,6 +80,7 @@ class Game
     v_winner? hash
     d_winner? hash
   end
+  # END TODO
 
   def swap_active_states
     @player1.active_player = !@player1.active_player
@@ -101,7 +103,7 @@ class Game
     row_choice = get_choice
     puts "Which column would you like to draw on, #{name}? 1 or 2 or 3"
     column_choice = get_choice
-    [row_choice, column_choice]
+    [column_choice, row_choice]
   end
 
   def play
