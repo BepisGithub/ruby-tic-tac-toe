@@ -134,7 +134,6 @@ class Game
         error_count += 1
         if error_count > 5
           @board.empty_spaces
-          # TODO: call empty spaces method
         end
       end
       # TODO: check if the player has won
@@ -151,7 +150,6 @@ class Game
         error_count += 1
         if error_count > 5
           @board.empty_spaces
-          # TODO: call empty spaces method
         end
       end
       # TODO: check if the player has won
