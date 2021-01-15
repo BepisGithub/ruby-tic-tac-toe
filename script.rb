@@ -131,7 +131,7 @@ class Game
     [column_choice, row_choice]
   end
 
-  def play
+  def round
     @player1.active_player = true if @player1.active_player == false && @player2.active_player == false
     case @player1.active_player
     when true
@@ -175,10 +175,16 @@ class Game
     end
     # TODO: End the game if a player has won
   end
+
+  def play
+    9.times do
+      round
+    end
+    puts "That was a good game!"
+  end
 end
 me = Player.new("me")
 you = Player.new("you")
 game = Game.new(me, you)
-5.times { game.play }
 # TODO: Keep playing the game until a winner is reached or the max number of attempts have been reached (9)
-p game.won?
+game.play
