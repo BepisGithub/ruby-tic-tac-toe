@@ -94,13 +94,12 @@ class Game
   def d_winner? hash
     return true if hash["top"][0] == hash["mid"][1] && hash["mid"][1] == hash["bot"][2]
     return true if hash["top"][2] == hash["mid"][1] && hash["mid"][1] == hash["bot"][0]
-    
+
     false
   end
 
   def won?
     hash = @board.print_map
-    p hash
     return true if h_winner? hash
     return true if v_winner? hash
     return true if d_winner? hash
@@ -113,8 +112,8 @@ class Game
     @player1.active_player = !@player1.active_player
     @player2.active_player = !@player2.active_player
   end
-
-  def get_choice # HACK
+  # HACK
+  def get_choice
     choice = gets.chomp.to_i until choice.is_a? Integer
     until choice <= 3 && choice >= 1
       puts "Out of range input, try again"
@@ -140,7 +139,6 @@ class Game
       @player2.active_player = false
       choices = position_choices @player1
       return_val = @board.draw(choices[0], choices[1], @player1.drawing)
-      p return_val
       error_count = 0
       while return_val == "Error"
         choices = position_choices @player1
@@ -149,7 +147,6 @@ class Game
         if error_count > 2
           rand_choice = @board.empty_spaces
           rand_choice = rand_choice.sample
-          p rand_choice
           return_val = @board.draw(rand_choice[0], rand_choice[1], @player1.drawing)
         end
       end
@@ -158,7 +155,6 @@ class Game
       @player2.active_player = true
       choices = position_choices @player2
       return_val = @board.draw(choices[0], choices[1], @player2.drawing)
-      p return_val
       error_count = 0
       while return_val == "Error"
         choices = position_choices @player2
@@ -167,7 +163,6 @@ class Game
         if error_count > 2
           rand_choice = @board.empty_spaces
           rand_choice = rand_choice.sample
-          p rand_choice
           return_val = @board.draw(rand_choice[0], rand_choice[1], @player2.drawing)
         end
       end
@@ -176,6 +171,7 @@ class Game
   end
 
   def play
+    @board.print_map
     9.times do
       round
     end
