@@ -4,7 +4,7 @@ class Board
   end
 
   def print_map # HACK
-    hash = Hash.new
+    hash = Hash.new # TODO: convert the values appended to the hash into an array of sorts in order to check specific points in the grid
     @map.each_with_index do |column, index|
       print "|"
       print @map[index][0] # Print the top items
@@ -162,3 +162,4 @@ me = Player.new("me")
 you = Player.new("you")
 game = Game.new(me, you)
 5.times { game.play }
+# TODO: Keep playing the game until a winner is reached or the max number of attempts have been reached (9)
