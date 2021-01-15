@@ -4,34 +4,33 @@ class Board
   end
 
   def print_map # HACK
-    hash = Hash.new # TODO: convert the values appended to the hash into an array of sorts in order to check specific points in the grid
+    hash = Hash.new
     @map.each_with_index do |column, index|
       print "|"
       print @map[index][0] # Print the top items
-      hash["top"].nil? ? hash["top"] = @map[index][0] : hash["top"] += @map[index][0]
+      hash["top"].nil? ? hash["top"] = [@map[index][0]] : hash["top"].push(@map[index][0])
       print "|"
     end
     print "\n"
     @map.each_with_index do |column, index|
       print "|"
       print @map[index][1] # Print the middle item
-      hash["mid"].nil? ? hash["mid"] = @map[index][1] : hash["mid"] += @map[index][1]
+      hash["mid"].nil? ? hash["mid"] = [@map[index][1]] : hash["mid"].push(@map[index][1])
       print "|"
     end
     print "\n"
     @map.each_with_index do |column, index| 
       print "|"
       print @map[index][2] # Print the bottom item
-      hash["bot"].nil? ? hash["bot"] = @map[index][2] : hash["bot"] += @map[index][2]
+      hash["bot"].nil? ? hash["bot"] = [@map[index][2]] : hash["bot"].push(@map[index][2])
       print "|"
     end
     print "\n"
-    p hash
+    hash
   end
 
   def draw(row, column, drawing)
-    # Need to ensure the position being drawn on can't be occupied
-    if @map[row][column] == " "
+    if @map[row][column] == " " # Need to ensure the position being drawn on can't be occupied
       @map[row][column] = drawing
     else
       puts "That spot is occupied, please try again"
@@ -89,7 +88,9 @@ class Game
 
   end
 
-  def won? hash
+  def won?
+    hash = @board.print_map
+    p hash
     h_winner? hash
     v_winner? hash
     d_winner? hash
@@ -130,7 +131,7 @@ class Game
       error_count = 0
       while return_val=="Error"
         choices = position_choices @player1
-        return_val = @board.draw(choices[0], choices[1], @player1.drawing) # TODO: Randomly place the users choice after 5 failed attempts
+        return_val = @board.draw(choices[0], choices[1], @player1.drawing)
         error_count += 1
         if error_count > 2
           rand_choice = @board.empty_spaces
@@ -144,7 +145,7 @@ class Game
     when false
       @player2.active_player = true
       choices = position_choices @player2
-      return_val = @board.draw(choices[0], choices[1], @player2.drawing) # TODO: Randomly place the users choice after 5 failed attempts
+      return_val = @board.draw(choices[0], choices[1], @player2.drawing)
       p return_val
       error_count = 0
       while return_val=="Error"
