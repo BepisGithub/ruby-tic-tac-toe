@@ -2,7 +2,7 @@ class Board
   def initialize
     @map = [[" "," "," "], [" "," "," "], [" "," "," "]]
   end
-  
+
   def print_map # HACK
     hash = Hash.new
     @map.each_with_index do |column, index|
@@ -60,6 +60,24 @@ class Game
     @player1 = player1
     @player2 = player2
     @board = Board.new()
+  end
+
+  def h_winner? hash
+
+  end
+
+  def v_winner? hash
+
+  end
+
+  def d_winner? hash
+
+  end
+
+  def won? hash
+    h_winner? hash
+    v_winner? hash
+    d_winner? hash
   end
 
   def swap_active_states
