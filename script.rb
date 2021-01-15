@@ -12,7 +12,7 @@ class Board
       print "|"
     end
     print "\n"
-    @map.each_with_index do |column, index| 
+    @map.each_with_index do |column, index|
       print "|"
       print @map[index][1] # Print the middle item
       hash["mid"].nil? ? hash["mid"] = @map[index][1] : hash["mid"] += @map[index][1]
@@ -41,8 +41,19 @@ class Board
   end
 
   def empty_spaces
+    empty_arr = []
+    @map.each_with_index do |column, index_column|
+      arr.each_with_index do |row, index_row|
+        empty_arr.push(@map[index_column][index_row]) if @map[index_column][index_row].include?(" ")
+      end
+    end
     # TODO: check each array for an empty space
     # TODO: if empty add it to the array
+    if empty_arr.empty?
+      puts "No empty spots"
+      return "Error"
+    end
+    empty_arr
   end
 end
 
