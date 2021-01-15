@@ -97,11 +97,10 @@ class Game
     choice - 1
   end
 
-  def position_choices name # TODO: THis doesn't work properly
-    # TODO: print which symbol (ie. X or O) corresponds with the player
-    puts "Which row would you like to draw on, #{name}? 1 or 2 or 3"
+  def position_choices player
+    puts "Which row would you like to draw your symbol #{player.drawing} on, #{player.name}? 1 or 2 or 3"
     row_choice = get_choice
-    puts "Which column would you like to draw on, #{name}? 1 or 2 or 3"
+    puts "Which column would you like to draw your symbol #{player.drawing} on, #{player.name}? 1 or 2 or 3"
     column_choice = get_choice
     [column_choice, row_choice]
   end
@@ -113,22 +112,22 @@ class Game
       # TODO: Let the player enter other values if they try to occupy a spot that is already filled
 
       @player2.active_player = false
-      choices = position_choices @player1.name
+      choices = position_choices @player1
       return_val = @board.draw(choices[0], choices[1], @player1.drawing) 
       p return_val
       while return_val=="Error"
-        choices = position_choices @player1.name
+        choices = position_choices @player1
         return_val = @board.draw(choices[0], choices[1], @player1.drawing) # TODO: Randomly place the users choice after 5 failed attempts
       end
       # TODO: check if the player has won
       swap_active_states
     when false
       @player2.active_player = true
-      choices = position_choices @player2.name
+      choices = position_choices @player2
       return_val = @board.draw(choices[0], choices[1], @player2.drawing) # TODO: Randomly place the users choice after 5 failed attempts
       p return_val
       while return_val=="Error"
-        choices = position_choices @player2.name
+        choices = position_choices @player2
         return_val = @board.draw(choices[0], choices[1], @player2.drawing)
       end
       # TODO: check if the player has won
