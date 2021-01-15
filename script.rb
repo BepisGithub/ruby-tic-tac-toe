@@ -43,8 +43,8 @@ class Board
   def empty_spaces
     empty_arr = []
     @map.each_with_index do |column, index_column|
-      arr.each_with_index do |row, index_row|
-        empty_arr.push(@map[index_column][index_row]) if @map[index_column][index_row].include?(" ")
+      column.each_with_index do |row, index_row|
+        empty_arr.push([index_column,index_row]) if @map[index_column][index_row].include?(" ")
       end
     end
     # TODO: check each array for an empty space
@@ -53,7 +53,7 @@ class Board
       puts "No empty spots"
       return "Error"
     end
-    empty_arr
+    p empty_arr
   end
 end
 
@@ -135,6 +135,7 @@ class Game
         return_val = @board.draw(choices[0], choices[1], @player1.drawing) # TODO: Randomly place the users choice after 5 failed attempts
         error_count += 1
         if error_count > 5
+          @board.empty_spaces
           # TODO: call empty spaces method
         end
       end
@@ -151,6 +152,7 @@ class Game
         return_val = @board.draw(choices[0], choices[1], @player2.drawing)
         error_count += 1
         if error_count > 5
+          @board.empty_spaces
           # TODO: call empty spaces method
         end
       end
