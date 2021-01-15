@@ -77,32 +77,33 @@ class Game
   end
 
   def h_winner? hash
-    return true if hash["top"][0] == hash["top"][1] && hash["top"][0] == hash["top"][2] && hash["top"][0] != " "
-    return true if hash["mid"][0] == hash["mid"][1] && hash["mid"][0] == hash["mid"][2] && hash["mid"][0] != " "
-    return true if hash["bot"][0] == hash["bot"][1] && hash["bot"][0] == hash["bot"][2] && hash["bot"][0] != " "
+    return hash["top"][0] if hash["top"][0] == hash["top"][1] && hash["top"][0] == hash["top"][2] && hash["top"][0] != " "
+    return hash["mid"][0] if hash["mid"][0] == hash["mid"][1] && hash["mid"][0] == hash["mid"][2] && hash["mid"][0] != " "
+    return hash["bot"][0] if hash["bot"][0] == hash["bot"][1] && hash["bot"][0] == hash["bot"][2] && hash["bot"][0] != " "
 
     false
   end
 
   def v_winner? hash
     3.times do |i|
-      return true if hash["top"][i] == hash["mid"][i] && hash["mid"][i] == hash["bot"][i] && hash["top"][i] != " "
+      return hash["top"][i] if hash["top"][i] == hash["mid"][i] && hash["mid"][i] == hash["bot"][i] && hash["top"][i] != " "
     end
     false
   end
 
   def d_winner? hash
-    return true if hash["top"][0] == hash["mid"][1] && hash["mid"][1] == hash["bot"][2] && hash["top"][0] != " "
-    return true if hash["top"][2] == hash["mid"][1] && hash["mid"][1] == hash["bot"][0] && hash["top"][2] != " "
+    return hash["top"][0] if hash["top"][0] == hash["mid"][1] && hash["mid"][1] == hash["bot"][2] && hash["top"][0] != " "
+    return hash["top"][2] if hash["top"][2] == hash["mid"][1] && hash["mid"][1] == hash["bot"][0] && hash["top"][2] != " "
 
     false
   end
 
   def won?
     hash = @board.print_map
-    return true if h_winner? hash
-    return true if v_winner? hash
-    return true if d_winner? hash
+    # TODO: Fix
+    return h_winner? hash if h_winner? hash
+    return v_winner? hash if v_winner? hash
+    return d_winner? hash if d_winner? hash
 
     false
   end
@@ -174,10 +175,15 @@ class Game
     9.times do
       round
       is_over = won?
-      if is_over do
-        
-        break
+      if is_over != false
+        if is_over == @player1.drawing
+          puts "Good job, #{@player1.name}. You won!"
+        else
+          puts "Good job, #{@player2.name}. You won!"
+        end
+        is_over = true
       end
+      break if is_over
     end
     puts "That was a good game!"
   end
