@@ -61,7 +61,7 @@ class Player
 
   @@number_of_players = 0
   def initialize(name)
-    @name = name
+    @name = name.to_s.capitalize
     @has_won = false
     @active_player = false
     (@@number_of_players % 2).zero? ? @drawing = "X" : @drawing = "O"
@@ -188,8 +188,8 @@ class Game
     puts "That was a good game!"
   end
 end
-me = Player.new("me")
-you = Player.new("you")
-game = Game.new(me, you)
+geoff = Player.new("geOff")
+yeos = Player.new("yeOs")
+game = Game.new(geoff, yeos)
 # TODO: Keep playing the game until a winner is reached
 game.play
