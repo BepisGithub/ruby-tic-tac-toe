@@ -51,7 +51,7 @@ class Board
       puts "No empty spots"
       return "Error"
     end
-    p empty_arr
+    empty_arr
   end
 end
 
@@ -133,7 +133,10 @@ class Game
         return_val = @board.draw(choices[0], choices[1], @player1.drawing) # TODO: Randomly place the users choice after 5 failed attempts
         error_count += 1
         if error_count > 5
-          @board.empty_spaces
+          rand_choice = @board.empty_spaces
+          rand_choice = rand_choice.sample
+          p rand_choice
+          return_val = @board.draw(rand_choice[0], rand_choice[1], @player1.drawing)
         end
       end
       # TODO: check if the player has won
@@ -149,7 +152,10 @@ class Game
         return_val = @board.draw(choices[0], choices[1], @player2.drawing)
         error_count += 1
         if error_count > 5
-          @board.empty_spaces
+          rand_choice = @board.empty_spaces
+          rand_choice = rand_choice.sample
+          p rand_choice
+          return_val = @board.draw(rand_choice[0], rand_choice[1], @player2.drawing)
         end
       end
       # TODO: check if the player has won
