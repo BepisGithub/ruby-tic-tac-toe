@@ -88,10 +88,13 @@ class Game
     3.times do |i|
       return true if hash["top"][i] == hash["mid"][i] && hash["mid"][i] == hash["bot"][i]
     end
+    false
   end
 
   def d_winner? hash
-
+    return true if hash["top"][0] == hash["mid"][1] && hash["mid"][1] == hash["bot"][2]
+    return true if hash["top"][2] == hash["mid"][1] && hash["mid"][1] == hash["bot"][0]
+    false
   end
 
   def won?
