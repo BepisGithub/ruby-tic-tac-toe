@@ -193,12 +193,14 @@ class Game
   end
 end
 
-puts "What is your name, player #{(Player.number_of_players)+1}? "
-first_player = gets.chomp.to_s
-first_player = Player.new(first_player)
-puts "What is your name, player #{(Player.number_of_players)+1}? "
-second_player = gets.chomp.to_s
-second_player = Player.new(second_player)
-game = Game.new(first_player, second_player)
-# TODO: Keep playing the game until a winner is reached
-game.play
+# puts "What is your name, player #{(Player.number_of_players)+1}? "
+# first_player = gets.chomp.to_s
+# first_player = Player.new(first_player)
+# puts "What is your name, player #{(Player.number_of_players)+1}? "
+# second_player = gets.chomp.to_s
+# second_player = Player.new(second_player)
+# game = Game.new(first_player, second_player)
+# # TODO: Keep playing the game until a winner is reached
+# game.play
+
+
